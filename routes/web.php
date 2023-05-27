@@ -16,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('body');
 // });
-
+// Route::get('/', function () {
+//     return view('body');
+// });
 Auth::routes();
-Route::get('/body', [App\Http\Controllers\HomeController::class, 'body'])->name('body');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/body', [App\Http\Controllers\HomeController::class, 'body'])->name('body');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/search', [App\Http\Controllers\HomeController::class, 'search'])->name('search');

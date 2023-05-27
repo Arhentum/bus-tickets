@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Ticket;
 
 class HomeController extends Controller
 {
@@ -21,12 +22,34 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    // public function index()
+    // {
+    //     $tickets = Ticket::all();
+
+    //     return view('body', [
+    //         'tickets' => $tickets
+    //     ]);
+    // }
     public function index()
     {
-        return view('home');
-    }
-    public function body()
-    {
+        
         return view('body');
     }
+    public function search(Request $request)
+{
+    $from = $request->input('from');
+    $to = $request->input('to');
+    $date = $request->input('date');
+
+    $tickets = Ticket::where('from', 'LIKE', "%{$from}%")
+        ->where('to', 'LIKE', "%{$to}%")
+        ->whereDate('date', $date)
+        ->get();
+
+    return view('home', [
+        'tickets' => $tickets
+    ]);
+}
+   
+    
 }

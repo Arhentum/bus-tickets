@@ -7,6 +7,12 @@ use App\Models\Booking;
 
 class BookingController extends Controller
 {
+    /**
+     * Сохраняет новое бронирование в базе данных.
+     *
+     * @param  Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         // Получение данных из запроса

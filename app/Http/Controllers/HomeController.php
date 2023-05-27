@@ -8,8 +8,8 @@ use App\Models\Booking;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
+     /**
+     * Создает новый экземпляр контроллера.
      *
      * @return void
      */
@@ -19,7 +19,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Отображает главную страницу приложения.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -36,6 +36,12 @@ class HomeController extends Controller
         
         return view('body');
     }
+    /**
+     * Выполняет поиск билетов на основе указанных критериев.
+     *
+     * @param  Request  $request
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function search(Request $request)
 {
     $from = $request->input('from');

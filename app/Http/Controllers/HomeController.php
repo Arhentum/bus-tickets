@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ticket;
+use App\Models\Booking;
 
 class HomeController extends Controller
 {
@@ -40,6 +41,8 @@ class HomeController extends Controller
     $from = $request->input('from');
     $to = $request->input('to');
     $date = $request->input('date');
+
+    
 
     $tickets = Ticket::where('from', 'LIKE', "%{$from}%")
         ->where('to', 'LIKE', "%{$to}%")

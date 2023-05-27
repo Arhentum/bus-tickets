@@ -6,7 +6,7 @@
 @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                        
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
@@ -50,7 +50,14 @@
                     <p>Прибытие: <span>{{$ticket -> Arrival}}</span></p>
                     <p>Продолжительность: <span>{{$ticket -> Time_in_road}}</span></p>
                     <p>Цена: <span>{{$ticket -> Price}}</span></p>
-                    <button>Забронировать билет</button>
+                    <form method="post" action="{{ route('bookings.store') }}">
+                        @csrf
+                        <input type="hidden" name="from" value="{{ $ticket->From }}">
+                        <input type="hidden" name="to" value="{{ $ticket->To }}">
+                        <input type="hidden" name="date" value="{{ $ticket->Date }}">
+                        <input type="hidden" name="departure" value="{{ $ticket->Departure }}">
+                        <button type="submit">Забронировать билет</button>
+                    </form>
                 </li>
                 @endforeach
                 

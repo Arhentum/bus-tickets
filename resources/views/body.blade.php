@@ -28,6 +28,7 @@
     </header>
     <main>
     <form method="get" action="{{ route('search') }}">
+        @csrf
         <label for="from">Откуда:</label>
         <input type="text" id="from" name="from">
 

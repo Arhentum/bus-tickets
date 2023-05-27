@@ -23,3 +23,4 @@ Auth::routes();
 // Route::get('/body', [App\Http\Controllers\HomeController::class, 'body'])->name('body');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/search', [App\Http\Controllers\HomeController::class, 'search'])->name('search');
+Route::post('/bookings', [App\Http\Controllers\BookingController::class, 'store'])->name('bookings.store');
